@@ -1,0 +1,322 @@
+-------------------- Log Start | Tue Sep 15 03:05:04 2026 --------------------
+platform: Linux-6.12.93+rpt-rpi-v8-aarch64-with-glibc2.36
+data_path: /home/jay/printer_data
+is_default_data_path: False
+config_file: /home/jay/printer_data/config/moonraker.conf
+backup_config: /home/jay/printer_data/config/.moonraker.conf.bkp
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: True
+instance_uuid: b16af6156b6b4e7997b9aa3e543490ce
+unix_socket_path: /home/jay/printer_data/comms/moonraker.sock
+structured_logging: False
+software_version: v0.10.0-29-g8e948f1
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/jay/printer_data/logs/moonraker.log
+python_version: 3.11.2 (main, Apr  8 2026, 01:58:00) [GCC 12.2.0]
+launch_args: /home/jay/moonraker-env/bin/python /home/jay/moonraker/moonraker/__main__.py
+msgspec_enabled: True
+uvloop_enabled: True
+
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+max_upload_size = 1024
+klippy_uds_address = ~/printer_data/comms/klippy.sock
+
+[file_manager]
+enable_object_processing = False
+
+[authorization]
+cors_domains = 
+	https://my.mainsail.xyz
+	http://my.mainsail.xyz
+	http://*.local
+	http://*.lan
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+
+[octoprint_compat]
+
+[history]
+
+[announcements]
+subscriptions = 
+	mainsail
+
+[update_manager]
+refresh_interval = 168
+enable_auto_refresh = True
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager mainsail-config]
+type = git_repo
+primary_branch = master
+path = ~/mainsail-config
+origin = https://github.com/mainsail-crew/mainsail-config.git
+managed_services = klipper
+
+#################################################################
+All Configuration Files:
+/home/jay/printer_data/config/moonraker.conf
+#################################################################
+Loading Sqlite database provider. Sqlite Version: 3.40.1
+Unsafe Shutdown Count: 11
+
+System Info:
+
+***python***
+  version: (3, 11, 2, 'final', 0)
+  version_string: 3.11.2 (main, Apr  8 2026, 01:58:00) [GCC 12.2.0]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 100000009a565b05
+  hardware_desc: 
+  model: Raspberry Pi 4 Model B Rev 1.1
+  total_memory: 748988
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 03
+  manufacturer: Sandisk
+  oem_id: 5344
+  product_name: SU16G
+  product_revision: 8.0
+  serial_number: 1044cc4e
+  manufacturer_date: 9/2013
+  capacity: 14.8 GiB
+  total_bytes: 15931539456
+
+***distribution***
+  name: Debian GNU/Linux 12 (bookworm)
+  id: debian
+  version: 12
+  version_parts: {'major': '12', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bookworm
+  release_info: {'name': 'MainsailOS', 'version_id': '2.2.2', 'codename': 'bookworm', 'id': 'mainsailos'}
+  kernel_version: 6.12.93+rpt-rpi-v8
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+Found libcamera Python module, version: v0.5.2+99-bfd68f78
+
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['network-online.target', 'sysinit.target', 'system.slice']
+**After=['system.slice', 'basic.target', 'systemd-journald.socket', 'sysinit.target', 'klipper.service', 'network-online.target']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/jay/printer_data/systemd/moonraker.env
+**ExecStart=/home/jay/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=jay
+
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['sysinit.target', '-.mount', 'system.slice']
+**After=['system.slice', '-.mount', 'systemd-journald.socket', 'sysinit.target', 'network-online.target', 'basic.target']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/jay/printer_data/systemd/klipper.env
+**ExecStart=/home/jay/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/jay/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=jay
+Git Repo moonraker: Warnings detected:
+  Repo has untracked source files: ['moonraker/components/timelapse.py']
+Git Repo klipper: No warnings detected
+Git Repo mainsail-config: No warnings detected
+Klipper Version: v0.13.0-699-gc707dd192
+2026-09-15 00:05:04,066 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 00:05:06,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 00:05:08,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 00:35:04,066 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 00:35:06,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 00:35:08,088 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:05:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:05:06,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:05:08,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:35:04,065 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:35:06,076 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 01:35:08,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:05:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:05:06,081 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:05:08,092 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:35:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:35:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 02:35:08,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:05:04,067 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:05:06,078 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:05:08,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:35:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:35:06,083 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 03:35:08,096 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:05:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:05:06,086 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:05:08,099 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:35:04,067 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:35:06,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 04:35:08,088 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:05:04,067 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:05:06,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:05:08,091 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:35:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:35:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 05:35:08,091 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:05:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:05:06,080 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:05:08,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:35:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:35:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 06:35:08,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:05:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:05:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:05:08,091 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:35:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:35:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 07:35:08,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:05:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:05:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:05:08,092 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:35:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:35:06,081 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 08:35:08,092 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:05:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:05:06,081 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:05:08,091 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:35:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:35:06,080 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 09:35:08,094 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:05:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:05:06,081 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:05:08,091 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:35:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:35:06,081 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 10:35:08,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:05:04,068 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:05:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:05:08,092 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:35:04,069 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:35:06,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 11:35:08,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:05:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:05:06,080 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:05:08,094 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:35:04,070 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:35:06,080 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 12:35:08,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:05:04,071 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:05:06,082 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:05:08,093 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:35:04,074 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:35:06,085 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 13:35:08,096 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:05:04,072 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:05:06,084 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:05:08,095 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:35:04,073 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:35:06,083 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 14:35:08,094 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:05:04,074 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:05:06,086 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:05:08,098 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:35:04,072 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:35:06,084 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 15:35:08,093 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:05:04,073 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:05:06,084 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:05:08,096 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:35:04,072 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:35:06,086 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 16:35:08,097 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:05:04,072 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:05:06,083 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:05:08,094 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:35:04,074 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:35:06,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 17:35:08,099 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:05:04,074 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:05:06,086 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:05:08,101 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:35:04,075 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:35:06,085 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 18:35:08,098 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:05:04,075 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:05:06,086 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:05:08,097 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:35:04,075 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:35:06,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 19:35:08,098 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:05:04,078 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:05:06,088 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:05:08,099 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:35:04,076 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:35:06,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 20:35:08,101 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:05:04,076 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:05:06,087 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:05:08,098 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:35:04,077 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:35:06,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 21:35:08,101 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:05:04,078 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:05:06,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:05:08,100 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:35:04,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:35:06,090 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 22:35:08,100 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:05:04,082 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:05:06,095 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:05:08,105 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:35:04,079 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'moonraker': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:35:06,089 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'klipper': [Errno -3] Temporary failure in name resolution
+2026-09-15 23:35:08,100 [announcements.py:_fetch_moonlight()] - Failed to update subscription 'mainsail': [Errno -3] Temporary failure in name resolution
